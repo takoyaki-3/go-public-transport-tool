@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -22,11 +23,7 @@ func Sec2HHMMSS(t int)string{
 }
 
 func HHMMSS2Sec(str string)int{
-	if len(str) < 8{
-		return -1
-	}
-	h,_ := strconv.Atoi(str[0:2])
-	m,_ := strconv.Atoi(str[3:5])
-	s,_ := strconv.Atoi(str[6:8])
+	var h, m, s int
+	fmt.Sscanf(str, "%d:%d:%d", &h, &m, &s)
 	return h*3600+m*60+s
 }
